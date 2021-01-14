@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: service-provider
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: CONFIG-SERVER
+      label: main
+      profile: dev
+  rabbitmq:
+    host: sz-zone1-3
+    port: 5672
+    username: guest
+    password: guest
+server:
+  port: 30000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://sz-zone1-1:10000/eureka
+  instance:
+    hostname: localhost
+    metadata-map:
+      zone: sz-zone1
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
